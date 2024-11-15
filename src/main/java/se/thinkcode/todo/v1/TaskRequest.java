@@ -3,12 +3,12 @@ package se.thinkcode.todo.v1;
 import se.thinkcode.todo.Owner;
 import se.thinkcode.todo.Task;
 
-public record TaskRequest(String taskOwner, String taskTodo) {
-    public Task getTask() {
-        return new Task(taskTodo());
+public record TaskRequest(String name, String task) {
+    public Task toTask() {
+        return new Task(task());
     }
 
-    public Owner getOwner() {
-        return new Owner(taskOwner());
+    public Owner toOwner() {
+        return new Owner(name());
     }
 }

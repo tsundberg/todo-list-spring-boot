@@ -20,8 +20,8 @@ public class TaskControllerV1 {
     @PostMapping("/addTask")
     @ResponseStatus(HttpStatus.CREATED)
     public void createTask(@RequestBody TaskRequest task) {
-        Task taskModel = task.getTask();
-        Owner ownerModel = task.getOwner();
+        Task taskModel = task.toTask();
+        Owner ownerModel = task.toOwner();
 
         service.createTask(taskModel, ownerModel);
     }
