@@ -8,6 +8,7 @@ public class TodoSpringBootApplicationTest {
 
     @Test
     void should_test_stuffy_things() {
-        assertThat(true).isTrue();
+        String[] empty = {};
+        TodoSpringBootApplication.main(empty);
     }
 }
