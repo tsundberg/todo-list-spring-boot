@@ -1,4 +1,4 @@
-package se.thinkcode.todo_spring_boot.todo;
+package se.thinkcode.todo;
 
 import org.springframework.stereotype.Component;
 

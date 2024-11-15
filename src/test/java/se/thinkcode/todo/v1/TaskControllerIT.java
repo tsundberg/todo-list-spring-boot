@@ -1,4 +1,4 @@
-package se.thinkcode.todo_spring_boot.todo.v1;
+package se.thinkcode.todo.v1;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,10 +26,11 @@ public class TaskControllerIT {
 
     @Test
     void should_create_task() {
+        TaskResponse expected = new TaskResponse("Öva");
         createTask();
         List<TaskResponse> actualTasks = getTasks();
 
-        assertThat(actualTasks).isNotEmpty();
+        assertThat(actualTasks).containsExactly(expected);
     }
 
     private void createTask() {

@@ -1,7 +1,7 @@
-package se.thinkcode.todo_spring_boot.todo.v1;
+package se.thinkcode.todo.v1;
 
-import se.thinkcode.todo_spring_boot.todo.Owner;
-import se.thinkcode.todo_spring_boot.todo.Task;
+import se.thinkcode.todo.Owner;
+import se.thinkcode.todo.Task;
 
 public record TaskRequest(String taskOwner, String taskTodo) {
     public Task getTask() {

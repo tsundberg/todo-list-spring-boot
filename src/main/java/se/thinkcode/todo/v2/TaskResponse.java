@@ -1,6 +1,6 @@
-package se.thinkcode.todo_spring_boot.todo.v1;
+package se.thinkcode.todo.v2;
 
-import se.thinkcode.todo_spring_boot.todo.Task;
+import se.thinkcode.todo.Task;
 
 import java.util.ArrayList;
 import java.util.List;

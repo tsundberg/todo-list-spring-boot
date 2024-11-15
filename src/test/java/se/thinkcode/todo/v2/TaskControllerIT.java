@@ -1,4 +1,4 @@
-package se.thinkcode.todo_spring_boot.todo.v2;
+package se.thinkcode.todo.v2;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -7,8 +7,6 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.web.reactive.server.EntityExchangeResult;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
-import se.thinkcode.todo_spring_boot.todo.v1.TaskRequest;
-import se.thinkcode.todo_spring_boot.todo.v1.TaskResponse;
 
 import java.util.List;
 
@@ -28,14 +26,15 @@ public class TaskControllerIT {
 
     @Test
     void should_create_task() {
+        TaskResponse expected = new TaskResponse("Practice");
         createTask();
-        List<se.thinkcode.todo_spring_boot.todo.v1.TaskResponse> actualTasks = getTasks();
+        List<TaskResponse> actualTasks = getTasks();
 
-        assertThat(actualTasks).isNotEmpty();
+        assertThat(actualTasks).containsExactly(expected);
     }
 
     private void createTask() {
-        se.thinkcode.todo_spring_boot.todo.v1.TaskRequest request = new se.thinkcode.todo_spring_boot.todo.v1.TaskRequest("Kalla", "Öva");
+        TaskRequest request = new TaskRequest("Niklas", "Practice");
         String path = "addTask";
         WebTestClient.RequestHeadersSpec<?> postClient = WebTestClient.bindToServer()
                 .baseUrl(baseUrl)
@@ -47,9 +46,9 @@ public class TaskControllerIT {
         actual.expectStatus().isCreated();
     }
 
-    private List<se.thinkcode.todo_spring_boot.todo.v1.TaskResponse> getTasks() {
+    private List<TaskResponse> getTasks() {
         String path;
-        path = "getTasks" + "/" + "Kalla";
+        path = "getTasks" + "/" + "Niklas";
         WebTestClient.RequestHeadersSpec<?> getClient = WebTestClient
                 .bindToServer()
                 .baseUrl(baseUrl)
@@ -59,7 +58,7 @@ public class TaskControllerIT {
         WebTestClient.ResponseSpec actualResponse = getClient.exchange();
 
         actualResponse.expectStatus().isOk();
-        EntityExchangeResult<List<se.thinkcode.todo_spring_boot.todo.v1.TaskResponse>> result = actualResponse
+        EntityExchangeResult<List<TaskResponse>> result = actualResponse
                 .expectBodyList(TaskResponse.class)
                 .returnResult();
 

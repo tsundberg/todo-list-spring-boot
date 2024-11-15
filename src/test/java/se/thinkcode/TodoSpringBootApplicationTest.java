@@ -1,11 +1,11 @@
-package se.thinkcode.todo_spring_boot;
+package se.thinkcode;
 
 import org.junit.jupiter.api.Test;
 
 public class TodoSpringBootApplicationTest {
 
     @Test
-    void should_test_stuffy_things() {
+    void should_game_the_system_and_give_us_good_test_coverage() {
         String[] empty = {};
         TodoSpringBootApplication.main(empty);
     }

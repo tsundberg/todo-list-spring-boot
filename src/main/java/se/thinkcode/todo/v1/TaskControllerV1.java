@@ -1,10 +1,10 @@
-package se.thinkcode.todo_spring_boot.todo.v1;
+package se.thinkcode.todo.v1;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import se.thinkcode.todo_spring_boot.todo.Owner;
-import se.thinkcode.todo_spring_boot.todo.Task;
-import se.thinkcode.todo_spring_boot.todo.TodoService;
+import se.thinkcode.todo.Owner;
+import se.thinkcode.todo.Task;
+import se.thinkcode.todo.TodoService;
 
 import java.util.List;
 
