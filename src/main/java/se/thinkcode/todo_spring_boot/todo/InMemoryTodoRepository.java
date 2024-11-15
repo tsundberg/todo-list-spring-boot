@@ -9,7 +9,7 @@ import java.util.Map;
 
 @Component
 public class InMemoryTodoRepository implements TodoRepository {
-    private final Map<Owner,List<Task>> tasks = new HashMap<>();
+    private final Map<Owner, List<Task>> tasks = new HashMap<>();
 
     @Override
     public void add(Owner owner, Task task) {

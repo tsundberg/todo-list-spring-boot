@@ -22,6 +22,7 @@ public class TaskControllerV1 {
     public void createTask(@RequestBody TaskRequest task) {
         Task taskModel = task.getTask();
         Owner ownerModel = task.getOwner();
+
         service.createTask(taskModel, ownerModel);
     }
 
@@ -29,6 +30,7 @@ public class TaskControllerV1 {
     public List<TaskResponse> getTasks(@PathVariable String owner) {
         Owner ownerModel = new Owner(owner);
         List<Task> taskList = service.getTasks(ownerModel);
+
         return TaskResponse.fromModel(taskList);
     }
 }

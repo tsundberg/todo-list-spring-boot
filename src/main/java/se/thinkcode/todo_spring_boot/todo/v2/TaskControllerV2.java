@@ -1,6 +1,5 @@
 package se.thinkcode.todo_spring_boot.todo.v2;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
