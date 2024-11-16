@@ -10,16 +10,17 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/v1")
-public class TaskControllerV1 {
+public class TaskController {
     private final TodoService service;
 
-    public TaskControllerV1(TodoService service) {
+    public TaskController(TodoService service) {
         this.service = service;
     }
 
     @PostMapping("/addTask")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createTask(@RequestBody TaskRequest task) {
+    public void createTask(@RequestBody
+                           TaskRequest task) {
         Task taskModel = task.toTask();
         Owner ownerModel = task.toOwner();
 
@@ -27,7 +28,8 @@ public class TaskControllerV1 {
     }
 
     @GetMapping("/getTasks/{owner}")
-    public List<TaskResponse> getTasks(@PathVariable String owner) {
+    public List<TaskResponse> getTasks(@PathVariable
+                                       String owner) {
         Owner ownerModel = new Owner(owner);
         List<Task> taskList = service.getTasks(ownerModel);
 

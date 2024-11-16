@@ -15,7 +15,7 @@ public class TaskControllerTest {
         TaskResponse expected = new TaskResponse("Öva");
         TodoRepository repository = new InMemoryTodoRepository();
         TodoService service = new TodoService(repository);
-        TaskControllerV1 controller = new TaskControllerV1(service);
+        TaskController controller = new TaskController(service);
         TaskRequest task = new TaskRequest("Kalla", "Öva");
 
         controller.createTask(task);

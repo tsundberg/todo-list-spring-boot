@@ -14,8 +14,8 @@ public class ServiceTest {
         Owner owner = new Owner("David");
         Task expected = new Task("Smurfa");
         Task task = new Task("Smurfa");
-        service.createTask(task, owner);
 
+        service.createTask(task, owner);
         List<Task> actual = service.getTasks(owner);
 
         assertThat(actual).containsExactly(expected);

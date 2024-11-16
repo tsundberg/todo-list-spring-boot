@@ -9,13 +9,12 @@ import se.thinkcode.todo.TodoService;
 
 import java.util.List;
 
-@Component("TaskControllerV2")
 @RestController
 @RequestMapping(value = "/v2")
-public class TaskControllerV2 {
+public class TaskController {
     private final TodoService service;
 
-    public TaskControllerV2(TodoService service) {
+    public TaskController(TodoService service) {
         this.service = service;
     }
 

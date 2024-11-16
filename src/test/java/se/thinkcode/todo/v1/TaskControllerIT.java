@@ -47,8 +47,7 @@ public class TaskControllerIT {
     }
 
     private List<TaskResponse> getTasks() {
-        String path;
-        path = "getTasks" + "/" + "Kalla";
+        String path = "getTasks" + "/" + "Kalla";
         WebTestClient.RequestHeadersSpec<?> getClient = WebTestClient
                 .bindToServer()
                 .baseUrl(baseUrl)
