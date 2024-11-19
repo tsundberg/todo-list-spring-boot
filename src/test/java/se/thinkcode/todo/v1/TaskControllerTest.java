@@ -12,14 +12,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class TaskControllerTest {
     @Test
     void should_create_task() {
-        TaskResponse expected = new TaskResponse("Öva");
+        GetTasksResponse expected = new GetTasksResponse("Öva");
         TodoRepository repository = new InMemoryTodoRepository();
         TodoService service = new TodoService(repository);
         TaskController controller = new TaskController(service);
-        TaskRequest task = new TaskRequest("Kalla", "Öva");
+        CreateTaskRequest task = new CreateTaskRequest("Kalla", "Öva");
 
         controller.createTask(task);
-        List<TaskResponse> tasks = controller.getTasks("Kalla");
+        List<GetTasksResponse> tasks = controller.getTasks("Kalla");
 
         assertThat(tasks).containsExactly(expected);
     }

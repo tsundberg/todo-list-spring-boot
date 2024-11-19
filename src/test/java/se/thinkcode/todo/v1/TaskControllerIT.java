@@ -26,27 +26,27 @@ public class TaskControllerIT {
 
     @Test
     void should_create_task() {
-        TaskResponse expected = new TaskResponse("Öva");
+        GetTasksResponse expected = new GetTasksResponse("Öva");
         createTask();
-        List<TaskResponse> actualTasks = getTasks();
+        List<GetTasksResponse> actualTasks = getTasks();
 
         assertThat(actualTasks).containsExactly(expected);
     }
 
     private void createTask() {
-        TaskRequest request = new TaskRequest("Kalla", "Öva");
+        CreateTaskRequest request = new CreateTaskRequest("Kalla", "Öva");
         String path = "addTask";
         WebTestClient.RequestHeadersSpec<?> postClient = WebTestClient.bindToServer()
                 .baseUrl(baseUrl)
                 .build()
                 .post()
                 .uri(path)
-                .body(Mono.just(request), TaskRequest.class);
+                .body(Mono.just(request), CreateTaskRequest.class);
         WebTestClient.ResponseSpec actual = postClient.exchange();
         actual.expectStatus().isCreated();
     }
 
-    private List<TaskResponse> getTasks() {
+    private List<GetTasksResponse> getTasks() {
         String path = "getTasks" + "/" + "Kalla";
         WebTestClient.RequestHeadersSpec<?> getClient = WebTestClient
                 .bindToServer()
@@ -57,8 +57,8 @@ public class TaskControllerIT {
         WebTestClient.ResponseSpec actualResponse = getClient.exchange();
 
         actualResponse.expectStatus().isOk();
-        EntityExchangeResult<List<TaskResponse>> result = actualResponse
-                .expectBodyList(TaskResponse.class)
+        EntityExchangeResult<List<GetTasksResponse>> result = actualResponse
+                .expectBodyList(GetTasksResponse.class)
                 .returnResult();
 
         return result.getResponseBody();

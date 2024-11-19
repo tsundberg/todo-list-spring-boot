@@ -1,7 +1,6 @@
 package se.thinkcode.todo.v2;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 import se.thinkcode.todo.Owner;
 import se.thinkcode.todo.Task;
@@ -20,16 +19,16 @@ public class TaskController {
 
     @PostMapping("/addTask")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createTask(@RequestBody TaskRequest task) {
+    public void createTask(@RequestBody CreateTaskRequest task) {
         Task taskModel = task.toTask();
         Owner ownerModel = task.toOwner();
         service.createTask(taskModel, ownerModel);
     }
 
     @GetMapping("/getTasks/{owner}")
-    public List<TaskResponse> getTasks(@PathVariable String owner) {
+    public List<GetTaskResponse> getTasks(@PathVariable String owner) {
         Owner ownerModel = new Owner(owner);
         List<Task> taskList = service.getTasks(ownerModel);
-        return TaskResponse.fromModel(taskList);
+        return GetTaskResponse.fromModel(taskList);
     }
 }

@@ -20,7 +20,7 @@ public class TaskController {
     @PostMapping("/addTask")
     @ResponseStatus(HttpStatus.CREATED)
     public void createTask(@RequestBody
-                           TaskRequest task) {
+                           CreateTaskRequest task) {
         Task taskModel = task.toTask();
         Owner ownerModel = task.toOwner();
 
@@ -28,11 +28,11 @@ public class TaskController {
     }
 
     @GetMapping("/getTasks/{owner}")
-    public List<TaskResponse> getTasks(@PathVariable
+    public List<GetTasksResponse> getTasks(@PathVariable
                                        String owner) {
         Owner ownerModel = new Owner(owner);
         List<Task> taskList = service.getTasks(ownerModel);
 
-        return TaskResponse.fromModel(taskList);
+        return GetTasksResponse.fromModel(taskList);
     }
 }
